@@ -1,14 +1,18 @@
-﻿using System;
+using System;
+
+using R5T.T0064;
 
 
 namespace R5T.Ujung.Default
 {
-    public class ConstructorBasedSolutionDirectoryPathProvider : ISolutionDirectoryPathProvider
+    [ServiceImplementationMarker]
+    public class ConstructorBasedSolutionDirectoryPathProvider : ISolutionDirectoryPathProvider, IServiceImplementation
     {
         private string SolutionDirectoryPath { get; }
 
 
-        public ConstructorBasedSolutionDirectoryPathProvider(string solutionDirectoryPath)
+        public ConstructorBasedSolutionDirectoryPathProvider(
+            [NotServiceComponent] string solutionDirectoryPath)
         {
             this.SolutionDirectoryPath = solutionDirectoryPath;
         }
